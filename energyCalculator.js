@@ -23,10 +23,11 @@ const calculateLoadingEnergyConsumption = resourceEntry => {
 const calculateRenderingEnergyConsumption = navigationEntry => {
   const renderDuration = navigationEntry.duration
 
-  const watts = !isMobile ? 100 : 5
+  const watts = !isMobile ? 100 : 0.5
   const renderTimeInHours = (renderDuration / (1000 * 60 * 60))
   const wh = watts * renderTimeInHours
 
+  renderText(`Using ${isMobile ? 'mobile' : 'desktop'} device`)
   renderText(`Ad rendered in ${renderDuration.toFixed(2)}ms`)
   renderText(`Energy consumption from rendering ~${wh.toString().substring(0, 7)}Wh`)
 }
